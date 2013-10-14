@@ -1,4 +1,4 @@
-vlerdas-commons
+Common Utilities
 ===============
 
 Common Utility Library

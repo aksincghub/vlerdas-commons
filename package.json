@@ -1,0 +1,22 @@
+{
+  "name": "vcommons",
+  "version": "0.1.0",
+  "description": "Common Utilities used by VLER",
+  "keywords": [
+    "commons",
+    "utilities",
+    "common"
+  ],
+  "author": "Julian Jewel <julian@julianjewel.com>",
+  "scripts": {
+    "test": "node ./test.js"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/department-of-veterans-affairs/vlerdas-commons.git"
+  }
+}
