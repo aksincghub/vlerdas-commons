@@ -5,17 +5,18 @@ var Timestamp = require('mongodb').Timestamp;
 module.exports = util = {
 
 	beautify: function(docs) {
+		var _self=this;
 		docs = (docs) ? docs : [];
 		// TODO: Optimize - Use callback stringify to replace all object to string
 		if(_.isArray(docs)) {
 			var result=[];
 			docs.forEach(function (doc) {
-				this.beautifyDoc(doc);
+				_self.beautifyDoc(doc);
 				result.push(doc);
 			});
 			return result;
 		} else {
-			return this.beautifyDoc(docs);
+			return _self.beautifyDoc(docs);
 		}
 	},
 	beautifyDoc: function(doc) {
