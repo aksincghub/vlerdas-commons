@@ -4,35 +4,38 @@ var Timestamp = require('mongodb').Timestamp;
 
 module.exports = util = {
 
-	transformBSONIdtoHexId: function(docs) {
+	beautify: function(docs) {
 		docs = (docs) ? docs : [];
+		// TODO: Optimize - Use callback stringify to replace all object to string
 		if(_.isArray(docs)) {
 			var result=[];
 			docs.forEach(function (doc) {
-				if(_.isObject(doc._id)) {
-					doc._id = doc._id.toHexString();
-				} else if(_.isObject(doc.obj._id)) {
-					// Special case for text searches
-					doc.obj._id = doc.obj._id.toHexString();
-				} else if (_.isObject(doc.fileUpload) && _.isObject(doc.fileUpload.id)) {
-					doc.fileUpload.id = doc.fileUpload.id.toHexString();
-				}
+				this.beautifyDoc(doc);
 				result.push(doc);
 			});
 			return result;
 		} else {
-			if (_.isObject(docs)) {
-				if(_.isObject(docs._id)) {
-					docs._id = docs._id.toHexString();
-				}
-				else if (_.isObject(docs.fileUpload) && _.isObject(docs.fileUpload.id)) {
-					docs.fileUpload.id = docs.fileUpload.id.toHexString();
-				}
-			}
-			return docs;
+			return this.beautifyDoc(docs);
 		}
 	},
-		
+	beautifyDoc: function(doc) {
+		if(_.isObject(doc)) {
+			if(_.isObject(doc._id)) {
+				doc._id = doc._id.toHexString();
+			} else if(_.isObject(doc.obj._id)) {
+				// Special case for text searches
+				doc.obj._id = doc.obj._id.toHexString();
+			} else if (_.isObject(doc.fileUpload) && _.isObject(doc.fileUpload.id)) {
+				doc.fileUpload.id = doc.fileUpload.id.toHexString();
+			} else if (_.isObject(docs.filedata) && _.isObject(docs.filedata.id)) {
+				docs.filedata.id = docs.filedata.id.toHexString();
+			}
+			
+			if(_.isObject(doc.uploadDate)) {
+				doc.uploadDate = doc.uploadDate.toISOString();
+			}
+		}
+	},
 	getTimestamp: function(date) {
 		var time;
 		date || (date = new Date());
@@ -42,4 +45,5 @@ module.exports = util = {
 	getDate: function(timestamp) {
 		return new Date(timestamp.high_ * 1000);
 	}
+
 };
