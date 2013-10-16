@@ -26,10 +26,8 @@ module.exports = util = {
 			} else if(_.isObject(doc.obj) && _.isObject(doc.obj._id)) {
 				// Special case for text searches
 				doc.obj._id = doc.obj._id.toHexString();
-			} else if (_.isObject(doc.fileUpload) && _.isObject(doc.fileUpload.id)) {
-				doc.fileUpload.id = doc.fileUpload.id.toHexString();
-			} else if (_.isObject(doc.filedata) && _.isObject(doc.filedata.id)) {
-				doc.filedata.id = doc.filedata.id.toHexString();
+			} else if (_.isObject(doc.file) && _.isObject(doc.file.id)) {
+				doc.file.id = doc.file.id.toHexString();
 			}
 			
 			if(_.isObject(doc.uploadDate)) {
