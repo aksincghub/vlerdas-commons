@@ -8,6 +8,7 @@
     "common"
   ],
   "author": "Julian Jewel <julian@julianjewel.com>",
+  "main": "index.js",
   "scripts": {
     "test": "node ./test.js"
   },
