@@ -1,4 +1,3 @@
-var config = module.parent.parent.exports.config;
 _ = require('underscore');
 var Timestamp = require('mongodb').Timestamp;
 
