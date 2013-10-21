@@ -1,5 +1,4 @@
-var mongo = require("mongodb"),
-    config = module.parent.exports.config,
+var config = module.parent.exports.config,
     Ofuda = require('ofuda');
 
 var ofuda = new Ofuda({headerPrefix:'Amz', hash: 'sha1', serviceLabel: 'AWS', debug: false});
