@@ -1,13 +1,12 @@
-var config = module.parent.exports.config,
-    Ofuda = require('ofuda');
-
+var Ofuda = require('ofuda');
 var ofuda = new Ofuda({headerPrefix:'Amz', hash: 'sha1', serviceLabel: 'AWS', debug: false});
 
 /*
  * accesscontrol - handles http access control based on configuration
  */
 exports = module.exports = function accessControl(options)
-{
+{	
+	var config = options;
 	return function accessControl(req, res, next)
 	{
 		var isAuthorized = function(user) {
@@ -26,20 +25,5 @@ exports = module.exports = function accessControl(options)
         	res.writeHead(401)
         	res.end('Authorization failed!');
 		}
-
-		/*
-		if (req.header('Origin')) {
-			if (config.accessControl.allowOrigin) {
-				res.header('Access-Control-Allow-Origin', config.accessControl.allowOrigin);
-			}
-			if (config.accessControl.allowMethods) {
-				res.header('Access-Control-Allow-Methods', config.accessControl.allowMethods);
-			}
-			if (req.header('Access-Control-Request-Headers')) {
-				res.header('Access-Control-Allow-Headers', req.header('Access-Control-Request-Headers'));
-			}
-		}
-		return next();
-		*/
 	}
 };
