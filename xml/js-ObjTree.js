@@ -33,7 +33,7 @@ if (typeof window === 'undefined') {
 
 	//  object prototype
 
-	XML.ObjTree.prototype.xmlDecl = '<?xml version="1.0" encoding="UTF-8" ?>\n';
+	XML.ObjTree.prototype.xmlDecl = '<?xml version="1.0" encoding="UTF-8" ?>';
 	XML.ObjTree.prototype.attr_prefix = '-';
 	XML.ObjTree.prototype.overrideMimeType = 'text/xml';
 
@@ -248,12 +248,13 @@ if (typeof window === 'undefined') {
 	        // no tag
 	    } else if ( elem.length > 0 ) {
 	        if ( jelem.match( /\n/ )) {
-	            jelem = "<"+name+jattr+">\n"+jelem+"</"+name+">\n";
+	            jelem = "<"+name+jattr+">"+jelem+"</"+name+">";
 	        } else {
-	            jelem = "<"+name+jattr+">"  +jelem+"</"+name+">\n";
+	            jelem = "<"+name+jattr+">"  +jelem+"</"+name+">";
 	        }
 	    } else {
-	        jelem = "<"+name+jattr+" />\n";
+	        jelem = "<"+name+jattr+" />";
+	        jelem = "<"+name+jattr+" />";
 	    }
 	    return jelem;
 	};
@@ -283,7 +284,7 @@ if (typeof window === 'undefined') {
 	    if ( name == "#text" ) {
 	        return this.xml_escape(text);
 	    } else {
-	        return "<"+name+">"+this.xml_escape(text)+"</"+name+">\n";
+	        return "<"+name+">"+this.xml_escape(text)+"</"+name+">";
 	    }
 	};
 
